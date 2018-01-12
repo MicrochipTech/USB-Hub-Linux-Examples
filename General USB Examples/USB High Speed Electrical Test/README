@@ -1,6 +1,6 @@
 ﻿------------------------------------------------------------------------------
 
-This is the README file for Test Packet.
+This is the README file for USB Linux HSET
 
 $Id$
 
@@ -11,9 +11,8 @@ vim: spelllang=en spell tw=78
 Contents:
 1) General Information
 2) Requirements
-3) Building and installing libMPLABConnect
-4) Building and installing i2c_example
-5) License
+3) Building USB_Linux_HSET
+4) License
 
 
 ------------------------------------------------------------------------------
@@ -21,7 +20,7 @@ Contents:
 1) General Information
 ======================
 
-This project can be used for putting a hub into test mode test packet.
+This project can be used for putting a hub into various compliance test modes.
 
 
 ------------------------------------------------------------------------------
@@ -48,16 +47,8 @@ Bus 007 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
  0424 4916 is MCHP 2.0 hub. 0424 4940 is MCHP Hub feature controller
 ------------------------------------------------------------------------------
 
-3) Ensuring Test PAcket has correct VID and PID
+3) Building and installing i2c_Bridging example
 ==========================
-$ sudo nano TestPacket.c
-Change the PID of the hub to whatever the hub under test is.
-
-Save and exit
-
-4) Building and installing i2c_Bridging example
-==========================
-$ cd TestPacket/
 $ sudo su
 $ make
 gcc -c TestPacket.c -I/usr/local/include/libusb-1.0/
@@ -65,21 +56,30 @@ gcc TestPacket.o -lusb-1.0 -o TestPacket
 
 It will an executable.
 
-$./TestPacket
+$sudo ./USB_Linux_HSET
 
-This demo iniate the test packet on a port.
-Which port will the command be sent to?
+Please enter the product ID of the hub under test
+0x4916
+This demo will iniate a test mode on a port.
+Press '1' for Test_J
+Press '2' for Test_K
+Press '3' for Test_SE0_NAK
+Press '4' for Test_Packet
+Press '5' for Test_Force_Enable
+Press 'q' or 'Q' or CTL+C to quit
 4
-Port 4 selected
-Opening device ID 0424:4002...ok
-ok
+Which port will Test_Packet be sent to?
+3
+Port 3 selected
+Opening device ID 0424:4916...ok
 Port now in test mode!
+
 
 
 ------------------------------------------------------------------------------
 
 
-5) License
+4) License
 ==========
 **********************************************************************************
 * © 2017 Microchip Technology Inc. and its subsidiaries.

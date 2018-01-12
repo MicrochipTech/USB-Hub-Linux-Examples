@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 	char PRODUCT_ID1[] = "";
 
 	INPUT:
-	printf("Test hex inputs\n0x");
+	printf("Please enter the product ID of the hub under test\n0x");
 	scanf("%s", PRODUCT_ID1);
 	if(strlen(PRODUCT_ID1) != 4){
 		printf("Please enter 4 digit hex only\n");
@@ -88,7 +88,7 @@ int main(int argc, char **argv)
 	PRODUCT_ID = (int)strtol(PRODUCT_ID1, NULL, 16);
 
 
-	printf("This demo iniate a test mode on a port.\n");
+	printf("This demo will iniate a test mode on a port.\n");
 
 	TEST_SEL:
 		printf("Press '1' for Test_J\n");
