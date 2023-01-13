@@ -60,27 +60,30 @@ static struct libusb_session session;
 int main(int argc, char **argv)
 {
 	int r,i,z;
-	char yesno[] = "";
+	char yesno[128] = "";
 	int timeout_time;
-	char port_select[] = "";
-	char test_select[] = "";
+	char port_select[128] = "";
+	char test_select[128] = "";
 	ssize_t cnt;
 	int port;
 	int err = 0;
 	int VENDOR_ID = 0x0424;
 	int PRODUCT_ID = 0;
-	char PRODUCT_ID1[] = "";
+	char PRODUCT_ID1[128] = "";
 
 	INPUT:
 	printf("Please enter the product ID of the hub under test\n0x");
 	scanf("%s", PRODUCT_ID1);
+	printf("PRODUCT_ID1=[%s], strlen(PRODUCT_ID1)=[%d]\n", PRODUCT_ID1, strlen(PRODUCT_ID1));
 	if(strlen(PRODUCT_ID1) != 4){
 		printf("Please enter 4 digit hex only\n");
 		goto INPUT;
 	}
 	int count;
 	char hexset[] = "0123456789ABCDEFabcdef";
+	printf("PRODUCT_ID1=[%s], hexset=[%s]\n", PRODUCT_ID1, hexset);
 	count = strspn(PRODUCT_ID1, hexset);
+	printf("count=[%d]\n", count);
 	if (count != 4){
 		printf("Please enter 4 digit hex only\n");
 		goto INPUT;
